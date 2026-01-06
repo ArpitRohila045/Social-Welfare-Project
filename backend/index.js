@@ -14,9 +14,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 // database connection
-connectDB(process.env.MONGO_URI)
-    .then(() => console.log('mongoose connected'))
-    .catch((err) => console.log(err));
+// connectDB(process.env.MONGO_URI)
+//     .then(() => console.log('mongoose connected'))
+//     .catch((err) => console.log(err));
 
 // user router
 app.use('/api/user', userRouter);

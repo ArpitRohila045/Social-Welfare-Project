@@ -10,6 +10,17 @@ import Campaign from './pages/Campaign/Campaign'
 import Media from './pages/Media/Media'
 import Promotion from './pages/Promotion/Promotion'
 import ContactPage from './pages/CantactPage/CantactPage'
+import Login from "./pages/Auth/Login";
+import Register from "./pages/Auth/Register";
+
+// User Dashboard Pages
+import Dashboard from "./pages/User/Dashboard";
+import UserProfile from "./pages/User/UserProfile";
+import ApplyGrievance from "./pages/User/ApplyGrievance";
+import GrievanceList from "./pages/User/GrievanceList";
+import GrievanceDetails from "./pages/User/GrievanceDetails";
+import TrackGrievance from "./pages/User/TrackGrievance";
+import RegisterForVolunteer from './pages/Auth/RegisterForVolunteer'
 
 const App = () => {
   return (
@@ -24,6 +35,17 @@ const App = () => {
           <Route path='/media' element={<Media/>}></Route>
           <Route path='/promotion' element={<Promotion/>}></Route>
           <Route path='/contact' element={<ContactPage/>}></Route>
+          <Route path="/register-for-volunteer" element={<RegisterForVolunteer />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        {/* User Dashboard Routes */}
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/apply-grievance" element={<ApplyGrievance />} />
+        <Route path="/grievances" element={<GrievanceList />} />
+        <Route path="/grievance/:id" element={<GrievanceDetails />} />
+        <Route path="/track-grievance/:id" element={<TrackGrievance />} />
+
         </Routes>
         <Footer/>
       </BrowserRouter>
