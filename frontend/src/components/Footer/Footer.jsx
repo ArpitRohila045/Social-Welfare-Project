@@ -2,6 +2,7 @@ import React from 'react'
 import EmbededMap from '../../components/Utils/EmbededMap'
 
 const Footer = () => {
+
   const items = [
     {
       heading: 'Quick Links',
@@ -60,22 +61,23 @@ const Footer = () => {
     },
 
   ]
+
   return (
     <footer className='bg-slate-950 text-slate-50 p-4 relative'>
       <div className='max-w-screen-xl m-auto'>
         <div className='dotted-background absolute top-0 left-0 w-full h-full z-0'></div>
 
-        <div className='flex gap-4 relative z-1 justify-between'>
-        <div className="w-80 pr-10">
-          <strong>Address:</strong>
-          <p className ="pt-6">
-          Department of Social Welfare,
-          Government of NCT of Delhi,
-          7th Floor, MSO Building, ITO,
-          I.P Estate New Delhi-110002
-           </p>
+        <div className='flex flex-col md:flex-row md:gap-18 gap-6 relative z-1 justify-between'>
+          <div className="md:w-[40rem]">
+            <strong>Address:</strong>
+            <p className ="pt-1 md:pl-0.1">
+              Department of Social Welfare,<br />
+              Government of NCT of Delhi, <br />
+              7th Floor, MSO Building, ITO, <br />
+              I.P Estate New Delhi-110002 <br />
+            </p>
           </div>
-          <div className='flex justify-between gap-4 w-full mb-4  px-12'>
+          <div className='flex flex-row justify-between gap-[1.5rem] w-full mb-4  md:px-12'>
             {
               items.map(({ heading, links }, index) => (
                 <List
@@ -110,13 +112,13 @@ function Card({ heading, content }) {
 function List({ heading, links }) {
   return (
     <div>
-      <p className ="pb-4"><strong>{heading}</strong></p>
+      <p className ="pb-0.5"><strong>{heading}</strong></p>
       <ul>
         {
           links.map(({ text, href }, index) => (
             <li
               key={index}
-              className='text-slate-300 text-sm pt-2'
+              className='text-slate-300 text-sm pt-1'
             >
               <a href={href}>{text}</a>
             </li>

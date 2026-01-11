@@ -4,7 +4,7 @@ const FilterOption = ({ items }) => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   return (
-    <ul className='flex text-slate-600 gap-4 mb-8'>
+    <ul className='flex flex-wrap  text-slate-600 gap-4 mb-8'>
       {items.map((item, index) => (
         <li key={index}>
           <a

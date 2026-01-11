@@ -39,12 +39,12 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         {/* User Dashboard Routes */}
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/profile" element={<UserProfile />} />
-        <Route path="/apply-grievance" element={<ApplyGrievance />} />
-        <Route path="/grievances" element={<GrievanceList />} />
-        <Route path="/grievance/:id" element={<GrievanceDetails />} />
-        <Route path="/track-grievance/:id" element={<TrackGrievance />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<UserProfile />} />
+          <Route path="/apply-grievance" element={<ApplyGrievance />} />
+          <Route path="/grievances" element={<GrievanceList />} />
+          <Route path="/grievance/:id" element={<GrievanceDetails />} />
+          <Route path="/track-grievance/:id" element={<TrackGrievance />} />
 
         </Routes>
         <Footer/>

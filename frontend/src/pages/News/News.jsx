@@ -149,81 +149,54 @@ const headlines = [
 
 const News = () => {
     return (
-        <div className='max-w-screen-xl m-auto'>
-            <section className='mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 justify-center'>
-                <TreadingNews
-                    heading={treadingNewsData[0].heading}
-                    img={treadingNewsData[0].img}
-                    views={treadingNewsData[0].views}
-                    tags={treadingNewsData[0].tags}
-                />
+        <main className="max-w-screen-xl mx-auto px-4 md:px-20 py-10">
 
-                <TreadingNews
-                    heading={treadingNewsData[1].heading}
-                    img={treadingNewsData[1].img}
-                    views={treadingNewsData[1].views}
-                    tags={treadingNewsData[1].tags}
-                />
-            </section>
+            {/* Trending Section */}
+            <section className="mb-16">
+                <h2 className="text-xl font-bold text-slate-900 mb-6">
+                    Trending Now
+                </h2>
 
-            {/* <section className="mb-12">
-                <h3 className='font-semibold text-lg my-4'>Today's Headlines</h3>
-
-                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2'>
-                    {
-                        headlines.map((e, index) => (
-                            <Headline
-                                key={index}
-                                img={e.img}
-                                heading={e.heading}
-                                tags={e.tags}
-                                views={e.views}
-                                time={e.time}
-                            />
-                        ))
-                    }
-                </div>
-
-            </section> */}
-
-            <section className="mb-12">
-                <h3 className='font-semibold text-lg my-4'>Featured News</h3>
-
-                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 gap-y-6'>
-                    {
-                        featuredNewsData.map((e, index) => (
-                            <FeaturedCard
-                                key={index}
-                                img={e.img}
-                                heading={e.heading}
-                                source={e.source}
-                                time={e.time}
-                            />
-                        ))
-                    }
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <TreadingNews {...treadingNewsData[0]} />
+                    <TreadingNews {...treadingNewsData[1]} />
                 </div>
             </section>
 
-            <section className="mb-12">
-                <h3 className='font-semibold text-lg my-4'>All News</h3>
-                <FilterOption items={newsCategories} />
-                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
-                    {
-                        newsData.map((e, index) => (
-                            <NewsCard
-                                img={e.img}
-                                headline={e.headline}
-                                content={e.content}
-                                source={e.source}
-                                sourceLogo={e.sourceLogo}
-                                time={e.time}
-                            />
-                        ))
-                    }
+            {/* Featured News */}
+            <section className="mb-16">
+                <div className="flex items-center justify-between mb-6">
+                    <h2 className="text-xl font-bold text-slate-900">
+                        Featured News
+                    </h2>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {featuredNewsData.map((e, index) => (
+                        <FeaturedCard key={index} {...e} />
+                    ))}
                 </div>
             </section>
-        </div>
-    )
-}
+
+            {/* All News */}
+            <section>
+                <h2 className="text-xl font-bold text-slate-900 mb-4">
+                    All News
+                </h2>
+
+                <div className="mb-6">
+                    <FilterOption items={newsCategories} />
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {newsData.map((e, index) => (
+                        <NewsCard key={index} {...e} />
+                    ))}
+                </div>
+            </section>
+
+        </main>
+    );
+};
 
 export default News

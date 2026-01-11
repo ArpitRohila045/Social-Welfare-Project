@@ -31,38 +31,53 @@ const Home = () => {
     <>
       <Hero />
       <div>
-        <h3 className='flex items-center justify-center gap-1 font-bold text-xl text-slate-900 my-6'>
-          {/* Trending Highlights */}
-          {/* <img className='w-8' src={star} alt="" /> */}
-        </h3>
-        <div className="max-w-screen-xl flex flex-col md:flex-row justify-center m-auto gap-20 pb-12 h-fit">
-    <div className="max-w-lg">
-    <h3 className="font-bold text-indigo-500 mb-2">Welcome to Social Welfare</h3>
-      <div className ="bg-emerald-100 rounded-lg p-6">
-       
-        <p className ="font-semibold">
-            In 1948-49, this department was established as ‘Harijan Sahayak Vibhag’. To implement schemes related to the social sector, another department, ‘Social Welfare Department,’ was established in 1955. Later, in 1961, both departments merged to form the Harijan & Social Welfare Department, which was renamed to Social Welfare Department in 1991-92. The primary goal of this department is to provide better education to people belonging to weaker and backward sections of society and to support their social and economic upliftment.
-            Grant is approved by the Social Welfare Minister from his discretional fund. Rs. 35 Lakhs have been fixed for this fund. Apart from the above, Disabled and Old Age Homes, operation of Rajkiya Bhikshuk Grih is being operated and financial assistance is provided to various volunteer organizations which are working for welfare of scheduled castes. 
-        </p>
-        </div>
-    </div>
-    <div className="max-w-md">
-        <h3 className="font-bold text-indigo-500 mb-2">Events</h3>
-        <Notification />
-            {/* <Events /> */}
+          <h3 className='flex items-center justify-center gap-1 font-bold text-xl text-slate-900 my-6'>
+            {/* Trending Highlights */}
+            {/* <img className='w-8' src={star} alt="" /> */}
+          </h3>
+          <div 
+            className="flex flex-col md:flex-row justify-between between m-auto md:px-[14rem] gap-10 h-fit">
+            <div className="md:max-w-[50%]">
+              <h3 className="font-[500] text-indigo-500 mb-2 text-[1.4rem] px-[1rem]">Welcome to Social Welfare</h3>
+              <div className =" md:rounded-lg px-6">
+              
+                <p className ="font-[400]">
+                    In 1948-49, this department was established as ‘Harijan Sahayak Vibhag’. To implement schemes related to the social sector, another department, ‘Social Welfare Department,’ was established in 1955. Later, in 1961, both departments merged to form the Harijan & Social Welfare Department, which was renamed to Social Welfare Department in 1991-92. The primary goal of this department is to provide better education to people belonging to weaker and backward sections of society and to support their social and economic upliftment.
+                    Grant is approved by the Social Welfare Minister from his discretional fund. Rs. 35 Lakhs have been fixed for this fund. Apart from the above, Disabled and Old Age Homes, operation of Rajkiya Bhikshuk Grih is being operated and financial assistance is provided to various volunteer organizations which are working for welfare of scheduled castes. 
+                </p>
+              </div>
+            </div>
+            <div className="md:max-w-[50%]">
+                <h3 className="font-[500] text-[1.4rem] px-[1rem] text-indigo-500 mb-2">Events</h3>
+                <Notification />
+                    {/* <Events /> */}
+            </div>
           </div>
-        </div>
       </div>
       <Service />
       {/* <TeamMember /> */}
 
-      <div className='max-w-screen-xl m-auto'>
-        <h4 className='text-indigo-600 font-semibold text-center'>Latest News</h4>
-        <h3 className='flex items-center justify-center gap-1 font-bold text-xl text-slate-900'>
-          What is happening
-        </h3>
+      <div className="md:px-[5.5rem] px-4 py-8">
+        <div className="text-center mb-8">
+          <h4 className="text-indigo-600 font-semibold text-[1.4rem]">
+            Latest News
+          </h4>
+          <p className="text-slate-500 text-sm mt-1">
+            Official updates, press releases & announcements
+          </p>
+        </div>
 
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
+        <div
+          className="
+            grid grid-cols-1
+            sm:grid-cols-2
+            lg:grid-cols-3
+            gap- 
+            max-h-[40rem]
+            overflow-y-auto
+            scrollbar-hide
+          "
+        >
           {newsData.slice(0, 10).map((e, index) => (
             <NewsCard
               key={index}

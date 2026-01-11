@@ -67,7 +67,7 @@ const campaignData = {
 
 const CampaignSection = ({ heading, cardData }) => {
     return (
-        <section className='mb-4'>
+        <section className='flex flex-wrap justify-between mb-4 px-4'>
             <h2 className='font-bold text-xl mb-2'>{heading}</h2>
             <div className='flex gap-2'>
                 {cardData.map((e, index) => (

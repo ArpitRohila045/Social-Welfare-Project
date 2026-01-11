@@ -7,23 +7,24 @@ const Hero = () => {
             {/* <div id='hero' className="mx-auto w-full  text-center bg-slate-950 relative">
                    <img src="/slider1.jpg" class = "m-0" alt="..." /> */}
                    <div id="hero" className="relative w-full mx-auto text-center overflow-hidden">
-  {/* Blurred background image */}
-  <img
-    src="/slider1.jpg"
-    alt="Hero Background"
-    className="w-full h-[80vh] object-cover blur-sm brightness-75"
-  />
+                      {/* Blurred background image */}
+                      <img
+                        src="/slider1.jpg"
+                        alt="Hero Background"
+                        className="w-full h-[25vh] md:h-[60vh] object-cover brightness-[70%] opacity-80"
+                      />
 
-  {/* Centered content */}
-  <div className="absolute inset-0 flex flex-col items-center justify-center text-white px-4">
-    <h1 className="text-3xl md:text-5xl text-indigo-100 font-bold mb-4 drop-shadow-lg">
-      Serving Humanity, Shaping the Future
-    </h1>
-    <p className="text-lg md:text-xl max-w-2xl drop-shadow-md">
-      Our mission is to bring positive change by supporting those in need, promoting equality, and fostering a culture of care and compassion.
-    </p>
-  </div>
-</div>
+                      {/* Centered content */}
+                      <div className="absolute inset-0 flex flex-col items-center justify-center text-white px-4">
+                        <h1 className="text-3xl md:text-5xl text-indigo-100 font-bold mb-4 drop-shadow-lg">
+                          Serving Humanity, <br className='md:hidden'/>
+                          Shaping the Future
+                        </h1>
+                        <p className="hidden md:flex text-lg md:text-xl max-w-2xl drop-shadow-md">
+                          Our mission is to bring positive change by supporting those in need, promoting equality, and fostering a culture of care and compassion.
+                        </p>
+                      </div>
+                    </div>
                 {/* <div className="dotted-background absolute w-full h-full top-0 left-0 z-0"></div> */}
 
                 {/* <button className="px-4 py-2 rounded-md text-white text-center relative overflow-hidden">

@@ -2,7 +2,7 @@ import React from 'react'
 
 const FeaturedCard = ({ img, heading, source, time }) => {
     return (
-        <div className='max-w-xs'>
+        <div className=''>
             <div className='bg-slate-200 rounded overflow-hidden w-full h-48 mb-2'>
                 <img className='w-full h-full object-cover' src={img} alt="img" />
             </div>

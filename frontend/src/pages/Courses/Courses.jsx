@@ -29,7 +29,7 @@ const Review = ({img, rating, username, review }) => {
 
 const Card1 = ({ heading, description, rating, price, lastPrice, img }) => {
   return (
-    <div className='w-full max-w-xs shadow-lg rounded-lg overflow-hidden'>
+    <div className='w-full shadow-lg rounded-lg overflow-hidden'>
       <div className='h-32 bg-slate-300'>
         <img className='w-full h-full object-cover' src={img} alt="Course" />
       </div>
