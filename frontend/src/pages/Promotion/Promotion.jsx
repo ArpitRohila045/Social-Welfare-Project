@@ -1,4 +1,3 @@
-import React from 'react';
 import Banner from './Banner';
 import UserCard from '../../components/Utils/UserCard';
 import goldMedal from '../../assets/gold-medal.webp'

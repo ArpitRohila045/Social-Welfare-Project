@@ -1,8 +1,7 @@
-import React from 'react'
 import Home from './pages/Home/Home'
 import Navbar from './components/Navbar/Navbar'
 import About from './components/About/About'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import Footer from './components/Footer/Footer'
 import News from './pages/News/News'
 import Courses from './pages/Courses/Courses'
@@ -21,10 +20,26 @@ import GrievanceList from "./pages/User/GrievanceList";
 import GrievanceDetails from "./pages/User/GrievanceDetails";
 import TrackGrievance from "./pages/User/TrackGrievance";
 import RegisterForVolunteer from './pages/Auth/RegisterForVolunteer'
+import { Schemes } from './pages/Schemes'
+import { useEffect } from 'react'
+import { SearchPage } from './pages/Schemes/SearchPage'
+
+
+const ScrollToTop = () => {
+  const {pathname} = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0,0);
+  },[pathname])
+
+  return null;
+}
+
 
 const App = () => {
   return (
       <BrowserRouter>
+        <ScrollToTop />
         <Navbar />
         <Routes>
           <Route path='/' element={<Home />}></Route>
@@ -45,7 +60,8 @@ const App = () => {
           <Route path="/grievances" element={<GrievanceList />} />
           <Route path="/grievance/:id" element={<GrievanceDetails />} />
           <Route path="/track-grievance/:id" element={<TrackGrievance />} />
-
+          <Route path="/atal-kishan-yojana" element={<Schemes />}></Route>
+          <Route path='/schemes/search' element={<SearchPage></SearchPage>}></Route>
         </Routes>
         <Footer/>
       </BrowserRouter>

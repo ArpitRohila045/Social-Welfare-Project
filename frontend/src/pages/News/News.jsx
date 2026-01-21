@@ -1,10 +1,15 @@
-import React from 'react'
 import NewsCard from '../../components/Utils/NewsCard'
 import Headline from './Headline';
 import FeaturedCard from './FeaturedCard';
 import FilterOption from '../../components/Utils/FilterOption';
 import TreadingNews from './TreadingNews';
 import newsData from './newsData.json'
+import slider1 from '../../assets/slider1.jpg'
+import healthCampaign from '../../assets/health-campaign.jpg'
+import socialBanner from '../../assets/social-welfare-banner.jpg'
+import campaignImg from '../../assets/campaign.jpg'
+import campaign1 from '../../assets/campaign-1.avif'
+import glanceBanner from '../../assets/glance-banner.jpg'
 
 const newsCategories = ["World", "Local", "Politics", "Business", "Technology", "Health", "Science", "Sports", "Entertainment", "Lifestyle", "Education", "Environment", "Opinion", "Weather", "Crime",
 ];
@@ -14,13 +19,13 @@ const treadingNewsData = [
         views: '123k',
         heading: 'NASHA MUKT BHARAT ABHIYAAN',
         tags: ['Finance', 'Market'],
-        img: '/events/Event1.jpeg',
+        img: "https://www.indiags.com/uploads/68b33e8665caf_1756577414.webp",
     },
     {
         views: '98k',
         heading: 'International Day of Older Persons',
         tags: ['Technology', 'Innovation'],
-        img: '/events/Event2.jpg',
+        img: "https://media.slidesgo.com/storage/9892242/conversions/0-international-day-of-older-persons-thumb.jpg",
     }
 ];
 
@@ -28,73 +33,73 @@ const treadingNewsData = [
 const featuredNewsData = [
     {
         heading: "Global Market Trends",
-        img: "/events/event3.jpg",
+        img: "https://www.thebusinessresearchcompany.com/graphimages/services_global_market_report_graphname.webp",
         source: "BBC",
         time: "15 min ago",
     },
     {
         heading: "Tech Innovations 2024",
-        img: "/events/event4.jpg",
+        img: "https://besacenter.org/wp-content/uploads/2023/07/shutterstock_2286807935-scaled.jpg",
         source: "CNN",
         time: "30 min ago",
     },
     {
         heading: "Health Breakthroughs",
-        img: "/events/event5.png",
+        img: "https://i.abcnewsfe.com/a/73b0cdb2-3fdc-4f3a-916f-e5a24105819b/ABC_Main_MedicalBreakthrough2023_v05_ag_1703815997403_hpMain_16x9.jpg?w=992",
         source: "Reuters",
         time: "1 hour ago",
     },
     {
         heading: "Art and Culture",
-        img: "/events/Event2.jpg",
+        img: campaign1,
         source: "The Guardian",
         time: "2 hours ago",
     },
     {
         heading: "Political Updates",
-        img: "/events/event6.png",
+        img: "src/assets/events/political_updates.webp",
         source: "Al Jazeera",
         time: "3 hours ago",
     },
     {
         heading: "Environmental News",
-        img: "/events/event6.jpg",
+        img: socialBanner,
         source: "BBC",
         time: "4 hours ago",
     },
     {
         heading: "Sports Highlights",
-        img: "/events/event7.jpg",
+        img: campaignImg,
         source: "ESPN",
         time: "5 hours ago",
     },
     {
         heading: "Business Insights",
-        img: "/events/Event1.jpeg",
+        img: slider1,
         source: "Bloomberg",
         time: "6 hours ago",
     },
     {
         heading: "Global Market Trends",
-        img: "/events/event3.jpg",
+        img: glanceBanner,
         source: "BBC",
         time: "15 min ago",
     },
     {
         heading: "Tech Innovations 2024",
-        img: "/events/event4.jpg",
+        img: campaignImg,
         source: "CNN",
         time: "30 min ago",
     },
     {
         heading: "Health Breakthroughs",
-        img: "/events/event5.png",
+        img: healthCampaign,
         source: "Reuters",
         time: "1 hour ago",
     },
     {
         heading: "Art and Culture",
-        img: "/events/Event2.jpg",
+        img: campaign1,
         source: "The Guardian",
         time: "2 hours ago",
     }

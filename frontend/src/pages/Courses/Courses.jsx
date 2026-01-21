@@ -63,42 +63,42 @@ const filterOptions = [
 
 const headingData = [
   {
-    img: "/courses/course1.jpeg",
+    img: "https://img-c.udemycdn.com/course/750x422/57832_362c_3.jpg",
     heading: "Introduction to Design",
     views: "1.2K",
     tags: ["Design", "Beginner"],
     time: "2 hours ago",
   },
   {
-    img: "/courses/course2.jpg",
+    img: "https://asthacareerpoint.com/wp-content/uploads/2020/03/86c377b6fa19ff07917fcd08f884aeb3-1024x683.jpg",
     heading: "Technical Course",
     views: "900",
     tags: ["Engineering", "Intermediate"],
     time: "5 hours ago",
   },
   {
-    img: "/courses/course3.jpeg",
+    img: "https://www.allalliedhealthschools.com/wp-content/uploads/2021/10/health-science-overview-1200x628-1.jpg",
     heading: "Health Sciences Overview",
     views: "1.5K",
     tags: ["Health Sciences", "Advanced"],
     time: "1 day ago",
   },
   {
-    img: "/courses/course4.jpeg",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnqRi1aknwMw9Ezf9dgQ2E7mvCIaunXV9XxQ&s",
     heading: "Humanities and Arts",
     views: "800",
     tags: ["Humanities", "Arts"],
     time: "3 days ago",
   },
   {
-    img: "/courses/course5.jpg",
+    img: "https://feelbooks.in/wp-content/uploads/2025/09/9798886131079.jpg",
     heading: "Management Essentials",
     views: "1.1K",
     tags: ["Management", "Business"],
     time: "1 week ago",
   },
   {
-    img: "/courses/course6.jpg",
+    img: "https://rukminim2.flixcart.com/image/480/640/ku1k4280/book/i/g/p/life-sciences-fundamentals-and-practice-i-original-imag78xdfdpdpc6x.jpeg?q=90",
     heading: "Science Fundamentals",
     views: "2K",
     tags: ["Science", "Beginner"],
@@ -114,7 +114,7 @@ const cardData = [
     rating: 4.5,
     price: "$49.99",
     lastPrice: "$99.99",
-      img: cyberCourseImage,
+    img: cyberCourseImage,
   },
   {
     heading: "Cyber Security Training for Teachers",
@@ -122,7 +122,7 @@ const cardData = [
     rating: 4.7,
     price: "$59.99",
     lastPrice: "$119.99",
-    img: "/courses/course3.jpeg",
+    img: "https://www.cybersecurityinstitute.in/blog/uploads/images/202508/image_870x_68b2eee52bc34.jpg",
   },
   {
     heading: "Advanced Cyber Security course",
@@ -154,7 +154,7 @@ const cardData = [
     rating: 4.4,
     price: "$29.99",
     lastPrice: "$59.99",
-    img: "/courses/course4.jpeg",
+    img: "https://greenwoodhigh.edu.in/wp-content/uploads/2024/08/simple-science-experiement-scaled.jpg",
   },
 ];
 

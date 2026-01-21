@@ -1,4 +1,7 @@
 import { NavLink } from "react-router-dom";
+import Button from "./Button";
+import PropTypes from 'prop-types';
+
 
 const MenuItems = ({ options, setMobileMenuOpen }) => {
     return (
@@ -24,7 +27,7 @@ const MenuItems = ({ options, setMobileMenuOpen }) => {
     );
 };
 
-const MobileMenu = ({ options, mobileMenuOpen, setMobileMenuOpen }) => {
+const MobileMenu = ({ options, mobileMenuOpen, setMobileMenuOpen, user, handleLogout }) => {
     return (
         <>
             {/* Backdrop */}
@@ -75,14 +78,60 @@ const MobileMenu = ({ options, mobileMenuOpen, setMobileMenuOpen }) => {
                 </nav>
 
                 {/* Footer (Optional) */}
-                <div className="absolute bottom-0 w-full px-6 py-4 border-t">
-                    <button className="w-full py-3 rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition">
-                        Logout
-                    </button>
+                <div className="flex flex-col gap-2 absolute bottom-0 w-full px-6 py-4 border-t">
+                    {user ? (
+                        <>
+                            <button 
+                                className="w-full py-3 rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition"
+                                onClick={handleLogout}
+                            >
+                                Logout
+                             </button>
+                        </>
+
+                    ) : (
+                        <>
+                            <Button onClick={() => setMobileMenuOpen(false)}>
+                                <NavLink
+                                    to="/login"
+                                >
+                                    Log In
+                                </NavLink>
+                            </Button>
+                            <Button onClick={() => setMobileMenuOpen(false)}>
+                                <NavLink
+                                    to="/register"
+                                >
+                                    Register
+                                </NavLink>
+                            </Button>
+                            <Button onClick={() => setMobileMenuOpen(false)}>
+                                <NavLink
+                                    to="/register-for-volunteer"
+                                >
+                                    Register for Volunteer
+                                </NavLink>
+                            </Button>
+                        </>
+                    )}
+                    
                 </div>
             </aside>
         </>
     );
 };
+
+MobileMenu.propTypes = {
+    options: PropTypes.array.isRequired,
+    mobileMenuOpen: PropTypes.bool.isRequired,
+    setMobileMenuOpen: PropTypes.func.isRequired,
+    user: PropTypes.object,
+    handleLogout: PropTypes.func.isRequired
+};
+
+MenuItems.propTypes = {
+    options: PropTypes.array.isRequired,
+    setMobileMenuOpen: PropTypes.func.isRequired
+}
 
 export default MobileMenu;

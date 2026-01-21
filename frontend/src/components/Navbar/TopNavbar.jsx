@@ -1,52 +1,22 @@
-import React from 'react';
 import { Link, useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types';
 import Button from '../Utils/Button';
 import RegisterForVolunteer from '../../pages/Auth/RegisterForVolunteer';
 
 const logo = 'https://icons.veryicon.com/png/o/miscellaneous/government-icon/social-public-welfare.png';
 
-const UserLoginNavbar = () => {
-    return (
-        <>
-            <Link to="/dashboard">
-                <Button children="Dashborad" />
-            </Link>
-            <Button onClick={handleLogout} children="Log out" />
-        </>
-    );
-};
 
-const UserLogoutNavbar = () => {
-    return (
-        <>
-            <Link to="/register-for-volunteer">
-                <Button children="Register for Volunteer" />
-            </Link>
+const TopNavbar = ({mobileMenuOpen, setMobileMenuOpen, user, handleLogout}) => {
+    // const navigate = useNavigate();
 
-            <Link to="/login">
-                <Button children="Log In"/>
-            </Link>
+    // // Check user session
+    // const user = JSON.parse(localStorage.getItem("user"));
 
-            <Link to="/register">
-                <Button children="Register" />
-            </Link>
-                    
-        </>
-    );
-};
-
-
-const TopNavbar = ({mobileMenuOpen, setMobileMenuOpen}) => {
-    const navigate = useNavigate();
-
-    // Check user session
-    const user = JSON.parse(localStorage.getItem("user"));
-
-    // Logout Function
-    const handleLogout = () => {
-        localStorage.removeItem("user");
-        navigate("/login");
-    };
+    // // Logout Function
+    // const handleLogout = () => {
+    //     localStorage.removeItem("user");
+    //     navigate("/login");
+    // };
 
     return (
         <div id="top-nav" className="flex justify-between items-center bg-slate-50 px-4 py-2 shadow-sm">
@@ -63,18 +33,37 @@ const TopNavbar = ({mobileMenuOpen, setMobileMenuOpen}) => {
             <div className="hidden md:flex gap-2 items-center">
                 {/* If user is logged in */}
                 {user ? (
-                    <UserLoginNavbar />
+                    <>
+                        <Link to="/dashboard">
+                            <Button>Dashborad</Button>
+                        </Link>
+                        <Button onClick={handleLogout}>Log out</Button>
+                    </>
                 ) : (
                     // If user is not logged in
-                    <UserLogoutNavbar/>
+                    <>
+                        <Link to="/register-for-volunteer">
+                            <Button>Register for Volunteer</Button>
+                        </Link>
+
+                        <Link to="/login">
+                            <Button>Log In</Button>
+                        </Link>
+
+                        <Link to="/register">
+                            <Button>Register</Button>
+                        </Link>
+                    </>
                 )}
             </div>
 
             {/* Mobile Menu Button */}
 
-            <Button children="☰" className='md:hidden bg-white text-2xl' onClick={() => setMobileMenuOpen(!mobileMenuOpen)}/>
+            <Button className='md:hidden bg-white text-2xl' onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>☰</Button>
         </div>
     );
 };
+
+
 
 export default TopNavbar;

@@ -1,5 +1,4 @@
-import React from 'react'
-import { Carousel } from "flowbite-react";
+import slider from '../../assets/slider1.jpg';
 
 const Hero = () => {
     return (
@@ -9,7 +8,7 @@ const Hero = () => {
                    <div id="hero" className="relative w-full mx-auto text-center overflow-hidden">
                       {/* Blurred background image */}
                       <img
-                        src="/slider1.jpg"
+                        src={slider}
                         alt="Hero Background"
                         className="w-full h-[25vh] md:h-[60vh] object-cover brightness-[70%] opacity-80"
                       />
