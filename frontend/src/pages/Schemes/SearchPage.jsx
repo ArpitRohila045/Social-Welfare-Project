@@ -1,5 +1,6 @@
-import { schemes } from './schemes'
 import { useSearchParams } from 'react-router-dom'
+import categories from '../../data/categories.json'
+import schemes  from '../../data/schemes.json'
 
 export const SearchPage = () => {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -8,18 +9,14 @@ export const SearchPage = () => {
     const searchQuery = searchParams.get('q') || ''
 
     // Flatten schemes
-    const allSchemes = schemes.flatMap(({ schemes }) => schemes)
-
-    // Unique categories
-    const categories = [...new Set(allSchemes.map(s => s.category))]
-
+    const allSchemes = schemes.schemes
     // Filtered schemes
     const filteredSchemes = allSchemes.filter((scheme) => {
         const matchesCategory = selectedCategory
             ? scheme.category === selectedCategory
             : true
 
-        const matchesSearch = scheme.scheme_name
+        const matchesSearch = scheme.details.description
             .toLowerCase()
             .includes(searchQuery.toLowerCase())
 
@@ -82,11 +79,11 @@ export const SearchPage = () => {
                             All Categories
                         </button>
 
-                        {categories.map(category => (
+                        {categories.categories.map(category => (
                             <button
-                                key={category}
+                                key={category.id}
                                 onClick={() =>
-                                    updateParams({ category })
+                                    updateParams({ category: category.name })
                                 }
                                 className={`text-md block font-semibold text-left ${
                                     selectedCategory === category
@@ -94,7 +91,7 @@ export const SearchPage = () => {
                                         : 'text-gray-700 hover:text-blue-600'
                                 }`}
                             >
-                                {category}
+                                {category.name}
                             </button>
                         ))}
                     </div>

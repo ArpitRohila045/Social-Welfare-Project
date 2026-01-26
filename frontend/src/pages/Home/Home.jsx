@@ -9,7 +9,64 @@ import Notification from "../../components/Notification/Notification";
 import Events from "../../components/Events/Events";
 import star from "../../assets/star.png";
 import newsData from "../News/newsData.json";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import categoriesData from "../../data/categories.json";
+
+const SchemesCategory = () => {
+  return (
+    <section id="Search-by-category" className="py-12 bg-gradient-to-b from-slate-50 to-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 
+            role="heading" 
+            className="text-2xl font-bold text-indigo-600 mb-3"
+          >
+            Search By Category
+          </h2>
+          <p className="text-slate-600 text-md">
+            Find schemes tailored to your needs
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          {categoriesData.categories.map((category) => (
+            <Link
+              key={category.name}
+              to={{
+                pathname : "/schemes/search",
+                search : `?category=${encodeURIComponent(category.name)}`
+              }}
+            >
+              <div 
+                className="group flex flex-col items-center p-6 
+                      bg-white rounded-lg shadow-md 
+                        hover:shadow-xl transition-all duration-300 
+                        hover:-translate-y-1 cursor-pointer 
+                        hover:border-indigo-400
+                        border border-slate-100
+                        h-full
+                        " 
+              >
+                <div className="mb-4">
+                  <div className="w-20 h-20 bg-indigo-50 rounded-full flex items-center justify-center group-hover:bg-indigo-100 transition-colors">
+                    <img 
+                      src={category.icon}
+                      alt={category.name} 
+                      className="w-12 h-12 object-contain"
+                    />
+                  </div>
+                </div>
+                <p className="text-center text-sm font-semibold text-slate-800 group-hover:text-indigo-600 transition-colors">
+                  {category.name}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
 
 const Home = () => {
   const [users, setUsers] = useState([]);
@@ -71,7 +128,9 @@ const Home = () => {
       <Service />
       {/* <TeamMember /> */}
 
-      <div className="md:px-[5.5rem] px-4 py-8">
+      <SchemesCategory />
+
+      {/* <div className="md:px-[5.5rem] px-4 py-8">
         <div className="text-center mb-8">
           <h4 className="text-indigo-600 font-semibold text-[1.4rem]">
             Latest News
@@ -104,7 +163,7 @@ const Home = () => {
             />
           ))}
         </div>
-      </div>
+      </div> */}
 
       <Contact />
     </>
