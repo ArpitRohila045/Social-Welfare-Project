@@ -1,14 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Hero from "./Hero";
-import NewsCard from "../../components/Utils/NewsCard";
 import Service from "../../components/Service/Service";
-import TeamMember from "../../components/TeamMember/TeamMember";
 import Contact from "../../components/Contact/Contact";
 import Notification from "../../components/Notification/Notification";
-import Events from "../../components/Events/Events";
-import star from "../../assets/star.png";
-import newsData from "../News/newsData.json";
 import { Link } from "react-router-dom";
 import categoriesData from "../../data/categories.json";
 

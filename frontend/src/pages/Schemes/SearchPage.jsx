@@ -1,141 +1,138 @@
-import { useSearchParams } from 'react-router-dom'
-import categories from '../../data/categories.json'
-import schemes  from '../../data/schemes.json'
+import { useSearchParams } from "react-router-dom";
+import api from "../../api.js";
+import { useEffect, useState } from "react";
 
 export const SearchPage = () => {
-    const [searchParams, setSearchParams] = useSearchParams()
+    const [searchParams, setSearchParams] = useSearchParams();
 
-    const selectedCategory = searchParams.get('category') || ''
-    const searchQuery = searchParams.get('q') || ''
+    const [categories, setCategories] = useState([]);
+    const [schemes, setSchemes] = useState([]);
+    const [loading, setLoading] = useState(false);
 
-    // Flatten schemes
-    const allSchemes = schemes.schemes
-    // Filtered schemes
-    const filteredSchemes = allSchemes.filter((scheme) => {
-        const matchesCategory = selectedCategory
-            ? scheme.category === selectedCategory
-            : true
+    const selectedCategory = searchParams.get("category") || "";
+    const searchQuery = searchParams.get("q") || "";
 
-        const matchesSearch = scheme.details.description
-            .toLowerCase()
-            .includes(searchQuery.toLowerCase())
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const res = await api.get("/categories");
+                setCategories(res.data);
+            } catch (err) {
+                console.err("Failed to fetch Categories", err);
+            }
+        };
 
-        return matchesCategory && matchesSearch
-    })
+        fetchCategories();
+    }, []);
+
+    
+    useEffect(() => {
+        const fetchSchemes = async () => {
+            try {
+                setLoading(true);
+                const res = await api.get("/schemes", {
+                    params : selectedCategory
+                        ? { category : selectedCategory}
+                        : {}
+                });
+                setSchemes(res.data);
+            } catch (err) {
+                console.err(err);
+                setSchemes([]);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchSchemes();
+    }, [selectedCategory]);
 
     // Update URL safely
     const updateParams = (params) => {
-        setSearchParams(prev => {
-            const newParams = new URLSearchParams(prev)
+        setSearchParams((prev) => {
+            const newParams = new URLSearchParams(prev);
             Object.entries(params).forEach(([key, value]) => {
-                if (!value) newParams.delete(key)
-                else newParams.set(key, value)
-            })
-            return newParams
-        })
-    }
+                if (!value) newParams.delete(key);
+                else newParams.set(key, value);
+            });
+                return newParams;
+        });
+    };
 
     return (
         <div className="flex min-h-screen bg-gray-50">
+        {/* Sidebar */}
+        <aside className="w-[280px] bg-white border-r">
+            <div className="p-6">
+            <h3 className="text-lg font-bold mb-4">Explore Categories</h3>
 
-            {/* Sidebar */}
-            <aside className="w-fit bg-white border-r border-gray-200">
-                <div className="p-12 h-full flex flex-col">
+            <input
+                type="text"
+                placeholder="Search schemes..."
+                value={searchQuery}
+                onChange={(e) => updateParams({ q: e.target.value })}
+                className="mb-4 px-3 py-2 w-full border rounded-md"
+            />
 
-                    <h3 
-                        className="text-lg font-bold mb-4">
-                        Explore Categories
-                    </h3>
+            <div className="h-[1px] bg-gray-200 my-4"></div>
 
-                    {/* Search */}
-                    <input
-                        type="text"
-                        placeholder="Search schemes..."
-                        value={searchQuery}
-                        onChange={(e) =>
-                            updateParams({ q: e.target.value })
-                        }
-                        className="
-                            mb-4
-                            px-3 py-2
-                            text-sm
-                            border rounded-md
-                            focus:ring-2 focus:ring-blue-500
-                        "
-                    />
+            <button
+                onClick={() => updateParams({ category: null })}
+                className={`block mb-2 font-semibold ${
+                !selectedCategory ? "text-blue-600" : "text-gray-700"
+                }`}
+            >
+                All Categories
+            </button>
 
-                    <div className=" bg-zinc-300 h-[1px] my-2"></div>
-
-                    {/* Categories */}
-                    <div className="space-y-2 overflow-y-auto">
-                        <button
-                            onClick={() => updateParams({ category: null })}
-                            className={`text-md font-semibold text-left ${
-                                !selectedCategory
-                                    ? 'font-bold text-blue-600'
-                                    : 'text-gray-700'
-                            }`}
-                        >
-                            All Categories
-                        </button>
-
-                        {categories.categories.map(category => (
-                            <button
-                                key={category.id}
-                                onClick={() =>
-                                    updateParams({ category: category.name })
-                                }
-                                className={`text-md block font-semibold text-left ${
-                                    selectedCategory === category
-                                        ? 'font-bold text-blue-600'
-                                        : 'text-gray-700 hover:text-blue-600'
-                                }`}
-                            >
-                                {category.name}
-                            </button>
-                        ))}
-                    </div>
-
-                </div>
-            </aside>
-
-            {/* Main Content */}
-            <main className="flex-1 p-8">
-                
-                <h2>Home Schemes Search</h2>
-                <h2 className="text-xl font-bold mb-6">
-                    {selectedCategory || 'All Schemes'}
-                </h2>
-
-                {filteredSchemes.length === 0 && (
-                    <p className="text-gray-500">
-                        No schemes found.
-                    </p>
-                )}
-
-                <div 
-                    className="grid grid-cols-1 gap-6"
+            {categories.map((cat) => (
+                <button
+                key={cat.id}
+                onClick={() => updateParams({ category: cat.category })}
+                className={`block mb-2 text-left ${
+                    selectedCategory === cat.category
+                    ? "font-bold text-blue-600"
+                    : "text-gray-700 hover:text-blue-600"
+                }`}
                 >
-                    {filteredSchemes.map((scheme) => (
-                        <div
-                            key={scheme.slug}
-                            className="bg-white p-6 rounded-lg border shadow-sm hover:shadow-md hover:bg-gray-300"
-                        >
-                            <h3 className="text-lg font-semibold mb-1">
-                                {scheme.scheme_name}
-                            </h3>
+                    {cat.category}
+                </button>
+            ))}
+            </div>
+        </aside>
 
-                            <p className="text-sm text-gray-500 mb-2">
-                                {scheme.state_or_ministry}
-                            </p>
+        {/* Main */}
+        <main className="flex-1 p-8">
+            <h2 className="text-xl font-bold mb-6">
+                {selectedCategory || "All Schemes"}
+            </h2>
 
-                            <p className="text-sm text-gray-700 line-clamp-3">
-                                {scheme.details.description}
-                            </p>
-                        </div>
-                    ))}
+            {loading && <p>Loading schemes...</p>}
+
+            {!loading && schemes.length === 0 && (
+                <p className="text-gray-500">No schemes found.</p>
+            )}
+
+            <div className="grid gap-6">
+            {schemes.map((scheme) => (
+                <div
+                    key={scheme.id}
+                    className="bg-white p-6 rounded-lg border hover:shadow-md"
+                >
+                <h3 className="text-lg font-semibold mb-1">
+                    {scheme.scheme_name}
+                </h3>
+
+                <p className="text-sm text-gray-500 mb-2">
+                    {scheme.state_or_ministry}
+                </p>
+
+                <p className="text-sm text-gray-700 line-clamp-3">
+                    {scheme.description}
+                </p>
                 </div>
-            </main>
+            ))}
+            </div>
+        </main>
         </div>
-    )
-}
+    );
+};
